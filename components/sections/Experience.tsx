@@ -112,7 +112,7 @@ export default function Experience() {
       })}
 
       {/* CTA final */}
-      <div className="relative bg-black text-white py-20">
+      <div className="relative bg-gradient-to-br from-gray-800 via-gray-700 to-gray-900 text-white py-20">
         <div className="container-custom text-center px-4">
           <h3 className="font-heading text-4xl md:text-5xl mb-6 text-white">
             Ven a vivir el momento
