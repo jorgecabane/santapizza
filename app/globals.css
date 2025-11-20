@@ -1,0 +1,98 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Importar fuentes de Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap');
+
+:root {
+  /* Variables CSS para colores */
+  --color-primary: #DC143C;
+  --color-primary-dark: #B71C1C;
+  --color-primary-light: #EF5350;
+  
+  --color-black: #000000;
+  --color-white: #FFFFFF;
+  
+  --color-beige: #F5F5DC;
+  --color-beige-light: #FAF0E6;
+  --color-olive: #6B8E23;
+  --color-sea-blue: #4682B4;
+  --color-sea-light: #5F9EA0;
+  --color-terracotta: #CD853F;
+  
+  --color-text-primary: #1A1A1A;
+  --color-text-secondary: #666666;
+  --color-text-light: #999999;
+  
+  --color-bg-primary: #FFFFFF;
+  --color-bg-secondary: #F5F5DC;
+  --color-bg-dark: #1A1A1A;
+  
+  /* Fuentes */
+  --font-playfair: 'Playfair Display', serif;
+  --font-inter: 'Inter', sans-serif;
+  /* --font-cormorant: 'Cormorant Garamond', serif; */
+  
+  /* Espaciado */
+  --spacing-section: 4rem;
+  --spacing-section-lg: 6rem;
+  
+  /* Transiciones */
+  --transition-fast: 150ms ease;
+  --transition-base: 300ms ease;
+  --transition-slow: 500ms ease;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-inter);
+  color: var(--color-text-primary);
+  background-color: var(--color-bg-primary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-playfair);
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--color-text-primary);
+}
+
+/* Utilidades personalizadas */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .section-padding {
+    @apply py-section px-4 md:px-6 lg:px-8;
+  }
+  
+  .section-padding-lg {
+    @apply py-section-lg px-4 md:px-6 lg:px-8;
+  }
+  
+  .container-custom {
+    @apply max-w-7xl mx-auto;
+  }
+}
+
+/* Animaciones suaves */
+@layer base {
+  * {
+    @apply transition-colors duration-300;
+  }
+}
+
