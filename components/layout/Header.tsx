@@ -74,26 +74,29 @@ export default function Header() {
                   smooth={true}
                   offset={item.offset}
                   duration={500}
-                  className={`text-sm font-medium transition-colors cursor-pointer ${
+                  activeClass="text-primary"
+                  className={`text-sm font-semibold transition-all duration-300 cursor-pointer relative group ${
                     isScrolled
-                      ? 'text-black hover:text-primary-dark'
+                      ? 'text-gray-700 hover:text-primary'
                       : 'text-white hover:text-primary-light'
                   }`}
                 >
                   {item.name}
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
                 </ScrollLink>
               ))}
             </div>
 
             {/* Mobile Menu Button */}
             <button
-              className={`md:hidden transition-colors z-50 relative ${
+              className={`md:hidden transition-colors z-50 relative focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-lg p-2 ${
                 isScrolled
                   ? 'text-primary hover:text-primary-dark'
                   : 'text-white hover:text-primary-light'
               }`}
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              aria-label="Toggle menu"
+              aria-label="Abrir menú de navegación"
+              aria-expanded={isMobileMenuOpen}
             >
               {isMobileMenuOpen ? (
                 <FiX className="w-6 h-6" />
@@ -133,8 +136,8 @@ export default function Header() {
             />
             <button
               onClick={() => setIsMobileMenuOpen(false)}
-              className="p-2 rounded-full hover:bg-gray-100 transition-colors"
-              aria-label="Cerrar menú"
+              className="p-2 rounded-full hover:bg-gray-100 transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+              aria-label="Cerrar menú de navegación"
             >
               <FiX className="w-6 h-6 text-gray-700" />
             </button>

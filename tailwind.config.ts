@@ -30,11 +30,19 @@ const config: Config = {
       fontFamily: {
         heading: ['var(--font-playfair)', 'serif'],
         body: ['var(--font-inter)', 'sans-serif'],
-        accent: ['var(--font-cormorant)', 'serif'],
       },
       spacing: {
-        'section': '4rem',
-        'section-lg': '6rem',
+        'section': '5rem',
+        'section-lg': '7rem',
+      },
+      animation: {
+        'fade-in': 'fadeIn 0.6s ease-out',
+        'fade-in-up': 'fadeInUp 0.8s ease-out',
+        'slide-in-left': 'slideInLeft 0.6s ease-out',
+        'slide-in-right': 'slideInRight 0.6s ease-out',
+      },
+      boxShadow: {
+        'soft': '0 2px 15px -3px rgba(0, 0, 0, 0.07), 0 10px 20px -2px rgba(0, 0, 0, 0.04)',
       },
     },
   },

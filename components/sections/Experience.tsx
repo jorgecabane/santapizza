@@ -1,6 +1,7 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
+import Button from '@/components/ui/Button';
 
 const experiences = [
   {
@@ -38,9 +39,8 @@ const experiences = [
 ];
 
 export default function Experience() {
-  const [activeId, setActiveId] = useState<string | null>(
-    experiences[0]?.id ?? null,
-  );
+  const [activeId, setActiveId] = useState<string | null>(null);
+  const hasBeenVisibleRef = useRef<Set<string>>(new Set());
 
   useEffect(() => {
     const sections = Array.from(
@@ -53,14 +53,24 @@ export default function Experience() {
           const id = entry.target.getAttribute('data-id');
           if (!id) return;
 
-          if (entry.isIntersecting && entry.intersectionRatio >= 0.6) {
-            // Cuando una sección está al menos al 60% en pantalla, la marcamos como activa
-            setActiveId(id);
+          // Si la sección está visible y no ha sido vista antes, activarla con animación
+          if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
+            if (!hasBeenVisibleRef.current.has(id)) {
+              hasBeenVisibleRef.current.add(id);
+              // Pequeño delay para asegurar que la animación se vea
+              setTimeout(() => {
+                setActiveId(id);
+              }, 150);
+            } else {
+              // Si ya fue vista, activarla inmediatamente
+              setActiveId(id);
+            }
           }
         });
       },
       {
-        threshold: [0.4, 0.6, 0.8],
+        threshold: [0.3, 0.5, 0.7],
+        rootMargin: '-20% 0px -20% 0px', // Solo activar cuando esté bien visible en el centro
       },
     );
 
@@ -82,19 +92,24 @@ export default function Experience() {
             key={experience.id}
             data-experience-section
             data-id={experience.id}
-            className="relative min-h-screen flex items-center justify-center"
+            className="relative min-h-screen flex items-center justify-center overflow-hidden"
             style={{ backgroundColor: '#00000063' }}
           >
             {/* Fondo con efecto parallax (background fijo) */}
             <div
-              className="absolute inset-0 -z-10 bg-fixed bg-center bg-cover"
-              style={{ backgroundImage: `url(${experience.image})` }}
+              className={`absolute inset-0 -z-10 bg-fixed bg-center bg-cover transition-transform duration-1000 parallax-slow ${
+                isActive ? 'scale-100' : 'md:scale-105 scale-100'
+              }`}
+              style={{
+                backgroundImage: `url(${experience.image})`,
+                willChange: 'transform',
+              }}
             />
             <div className="absolute inset-0 -z-10 bg-gradient-to-b from-black/60 via-black/40 to-black/70" />
 
             {/* Contenido */}
             <div
-              className={`container-custom px-4 md:px-6 lg:px-8 text-center text-white transition-all duration-700 ease-out transform ${
+              className={`container-custom px-4 md:px-6 lg:px-8 text-center text-white transition-all duration-700 ease-out ${
                 isActive
                   ? 'opacity-100 translate-y-0'
                   : 'opacity-0 translate-y-4'
@@ -103,9 +118,20 @@ export default function Experience() {
               <h2 className="font-heading text-4xl md:text-6xl lg:text-7xl mb-4 text-white drop-shadow-xl">
                 {experience.title}
               </h2>
-              <p className="xl md:text-2xl lg:text-3xl mb-6 text-white drop-shadow-md">
+              <p className="text-xl md:text-2xl lg:text-3xl mb-6 text-white drop-shadow-md font-body font-light">
                 {experience.subtitle}
               </p>
+              <div
+                className={`max-w-2xl mx-auto mt-8 transition-all duration-700 delay-300 ${
+                  isActive
+                    ? 'opacity-100 translate-y-0'
+                    : 'opacity-0 translate-y-4'
+                }`}
+              >
+                <p className="text-lg md:text-xl text-white/90 font-body leading-relaxed">
+                  {experience.description}
+                </p>
+              </div>
             </div>
           </article>
         );
@@ -117,18 +143,18 @@ export default function Experience() {
           <h3 className="font-heading text-4xl md:text-5xl mb-6 text-white">
             Ven a vivir el momento
           </h3>
-          <p className="text-xl md:text-2xl text-white/80 mb-8 max-w-3xl mx-auto">
-            Déjate llevar por una experiencia gastronómica única{' '}
-            donde la tradición italiana se encuentra con la magia del océano.
+          <p className="text-xl md:text-2xl text-white/80 mb-8 max-w-3xl mx-auto font-body">
+            Déjate llevar por una experiencia gastronómica única donde la tradición italiana se
+            encuentra con la magia del océano.
           </p>
-          <a
+          <Button
             href="https://gour.media/booking/santa-pizza/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block bg-primary hover:bg-primary-dark text-white px-10 py-5 rounded-full font-semibold text-lg transition-all duration-300 transform hover:scale-105"
+            variant="primary"
+            size="lg"
+            external
           >
             Reservar Mesa
-          </a>
+          </Button>
         </div>
       </div>
     </section>

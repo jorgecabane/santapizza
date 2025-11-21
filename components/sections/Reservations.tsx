@@ -3,6 +3,9 @@
 import { useState } from 'react';
 import { FiPhone, FiMail } from 'react-icons/fi';
 import { CONTACT } from '@/lib/constants';
+import Button from '@/components/ui/Button';
+import Card from '@/components/ui/Card';
+import ScrollReveal from '@/components/ui/ScrollReveal';
 
 export default function Reservations() {
   const [formData, setFormData] = useState({
@@ -25,42 +28,54 @@ export default function Reservations() {
   return (
     <section id="reservations" className="section-padding-lg bg-white">
       <div className="container-custom">
-        <div className="max-w-3xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="font-heading text-4xl md:text-5xl mb-4 text-primary">
-              Reservas
-            </h2>
-            <p className="text-xl text-gray-600">
-              Reserva tu mesa y vive la experiencia Santa Pizza
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-            <div className="bg-beige-light rounded-lg p-6">
-              <h3 className="font-heading text-xl mb-4 text-primary">Reserva por Teléfono</h3>
-              <a
-                href={`tel:${CONTACT.phone}`}
-                className="flex items-center text-lg font-semibold text-gray-700 hover:text-primary transition-colors"
-              >
-                <FiPhone className="w-5 h-5 mr-3" />
-                {CONTACT.phone}
-              </a>
+        <div className="max-w-4xl mx-auto">
+          <ScrollReveal direction="up" delay={0}>
+            <div className="text-center mb-16">
+              <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl mb-6 text-primary">
+                Reservas
+              </h2>
+              <p className="text-xl text-gray-600 font-body max-w-2xl mx-auto">
+                Reserva tu mesa y vive la experiencia Santa Pizza
+              </p>
             </div>
+          </ScrollReveal>
 
-            <div className="bg-beige-light rounded-lg p-6">
-              <h3 className="font-heading text-xl mb-4 text-primary">Reserva por Email</h3>
-              <a
-                href={`mailto:${CONTACT.email}`}
-                className="flex items-center text-lg font-semibold text-gray-700 hover:text-primary transition-colors"
-              >
-                <FiMail className="w-5 h-5 mr-3" />
-                {CONTACT.email}
-              </a>
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+            <ScrollReveal direction="right" delay={100}>
+              <Card hover padding="lg" className="bg-gradient-to-br from-beige-light to-white">
+                <h3 className="font-heading text-xl mb-4 text-primary">Reserva por Teléfono</h3>
+                <a
+                  href={`tel:${CONTACT.phone}`}
+                  className="flex items-center text-lg font-semibold text-gray-700 hover:text-primary transition-all duration-300 group"
+                >
+                  <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mr-4 group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300">
+                    <FiPhone className="w-6 h-6 text-primary" />
+                  </div>
+                  {CONTACT.phone}
+                </a>
+              </Card>
+            </ScrollReveal>
+
+            <ScrollReveal direction="left" delay={200}>
+              <Card hover padding="lg" className="bg-gradient-to-br from-beige-light to-white">
+                <h3 className="font-heading text-xl mb-4 text-primary">Reserva por Email</h3>
+                <a
+                  href={`mailto:${CONTACT.email}`}
+                  className="flex items-center text-lg font-semibold text-gray-700 hover:text-primary transition-all duration-300 group"
+                >
+                  <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mr-4 group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300">
+                    <FiMail className="w-6 h-6 text-primary" />
+                  </div>
+                  {CONTACT.email}
+                </a>
+              </Card>
+            </ScrollReveal>
           </div>
 
           {/* Formulario de reserva */}
-          <form onSubmit={handleSubmit} className="bg-beige-light rounded-lg p-8 space-y-6">
+          <ScrollReveal direction="up" delay={300}>
+            <Card padding="lg" className="bg-gradient-to-br from-beige-light to-white">
+              <form onSubmit={handleSubmit} className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
                 <label htmlFor="name" className="block text-sm font-semibold text-gray-700 mb-2">
@@ -182,13 +197,12 @@ export default function Reservations() {
               />
             </div>
 
-            <button
-              type="submit"
-              className="w-full bg-primary hover:bg-primary-dark text-white px-8 py-4 rounded-full font-semibold transition-all duration-300 transform hover:scale-105"
-            >
-              Enviar Reserva
-            </button>
-          </form>
+                <Button type="submit" variant="primary" size="lg" className="w-full">
+                  Enviar Reserva
+                </Button>
+              </form>
+            </Card>
+          </ScrollReveal>
         </div>
       </div>
     </section>

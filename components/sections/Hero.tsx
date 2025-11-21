@@ -20,14 +20,15 @@ export default function Hero() {
         <div className="mb-8 flex justify-center">
           <Image
             src="/icons/santapizza-white.svg"
-            alt="Santa Pizza"
+            alt="Santa Pizza - Tradición Italiana, Vista al Mar"
             width={800}
             height={60}
             className="w-[75%] h-auto"
             priority
+            aria-label="Logo de Santa Pizza"
           />
         </div>
-        <p className="font-accent text-lg md:text-2xl lg:text-3xl mb-8 max-w-3xl mx-auto text-balance">
+        <p className="font-body text-lg md:text-2xl lg:text-3xl mb-8 max-w-3xl mx-auto text-balance font-light">
           {RESTAURANT_INFO.tagline}
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-20">

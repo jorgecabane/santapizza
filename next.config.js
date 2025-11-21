@@ -6,6 +6,9 @@ const nextConfig = {
   // Optimización de imágenes
   images: {
     unoptimized: true, // Necesario cuando usas output: 'export'
+    formats: ['image/avif', 'image/webp'],
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
     remotePatterns: [
       {
         protocol: 'https',
@@ -44,6 +47,13 @@ const nextConfig = {
   env: {
     INSTAGRAM_URL: 'https://www.instagram.com/santapizzacl/',
   },
+  
+  // Optimizaciones de compilación
+  swcMinify: true,
+  compress: true,
+  
+  // Nota: Los headers de seguridad deben configurarse en el servidor web
+  // (nginx, Apache, Vercel, Netlify, etc.) cuando se usa output: 'export'
 }
 
 module.exports = nextConfig
