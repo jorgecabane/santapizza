@@ -331,7 +331,7 @@ export const LOCATIONS = [
     address: 'Rocas de Santo Domingo',
     description: 'Vista al mar, experiencia original desde 2001',
     googleMapsUrl: 'https://maps.google.com/...',
-    phone: '+56 X XXXX XXXX',
+    phone: '+56 9 8818 5585',
     email: 'santodomingo@santapizza.cl',
   },
   {
@@ -340,18 +340,18 @@ export const LOCATIONS = [
     address: 'Las Condes, Santiago',
     description: 'Ubicación urbana',
     googleMapsUrl: 'https://maps.google.com/...',
-    phone: '+56 X XXXX XXXX',
+    phone: '+56 9 8818 5585',
     email: 'lascondes@santapizza.cl',
   },
 ] as const;
 
 export const CONTACT = {
   instagram: 'https://www.instagram.com/santapizzacl/',
-  phone: '+56 X XXXX XXXX',
+  phone: '+56 9 8818 5585',
   email: 'contacto@santapizza.cl',
   hours: {
-    weekdays: '12:00 - 23:00',
-    weekends: '12:00 - 00:00',
+    weekdays: '10:00 - 12:30',
+    weekends: '12:30 - 21:30',
   },
 } as const;
 ```

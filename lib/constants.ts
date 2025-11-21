@@ -25,11 +25,11 @@ export const LOCATIONS = [
 export const CONTACT = {
   instagram: 'https://www.instagram.com/santapizzacl/',
   booking: 'https://gour.media/booking/santa-pizza/',
-  phone: '+56 X XXXX XXXX', // Actualizar con número real
+  phone: '+56 9 8818 5585', // Actualizar con número real
   email: 'contacto@santapizza.cl', // Actualizar con email real
   hours: {
     weekdays: '10:00 - 12:30',
-    weekends: '13:00 - 21:30',
+    weekends: '12:30 - 21:30',
   },
 } as const;
 
