@@ -40,16 +40,14 @@ export default function Hero() {
           >
             Reservar Mesa
           </a>
-          <ScrollLink
-            to="menu"
-            spy={true}
-            smooth={true}
-            offset={-80}
-            duration={500}
+          <a
+            href="https://gour.media/santa-pizza/"
+            target="_blank"
+            rel="noopener noreferrer"
             className="bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white px-8 py-4 rounded-full font-semibold border-2 border-white transition-all duration-300 cursor-pointer"
           >
             Ver Menú
-          </ScrollLink>
+          </a>
         </div>
       </div>
       
