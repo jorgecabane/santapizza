@@ -22,6 +22,10 @@ export const metadata: Metadata = {
   title: "Santa Pizza - Tradición Italiana, Vista al Mar",
   description: "Una experiencia que mezcla tradición italiana, vida sana y el gusto por el arte. Desde 2001 en las Rocas de Santo Domingo.",
   keywords: "pizza, restaurante italiano, Santo Domingo, Las Condes, comida italiana, vista al mar",
+  icons: {
+    icon: "/icon.svg",
+    apple: "/icon.svg",
+  },
   openGraph: {
     title: "Santa Pizza - Tradición Italiana, Vista al Mar",
     description: "Una experiencia que mezcla tradición italiana, vida sana y el gusto por el arte.",
